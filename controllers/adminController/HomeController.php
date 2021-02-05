@@ -2,6 +2,7 @@
 session_start();
 include_once './models/CatalogModel.php';
 include_once './models/ProductModel.php';
+// include_once './models/OrdertModel.php';
 /**
  * Class điều hướng Action từ HomeController
  * (Sau khi đăng nhập thành công!)
@@ -99,6 +100,10 @@ class HomeController
                     header('Location: admin.php?controller=home&action=showListProduct');
                     break;
                 // chỉnh sửa thông tin sản phẩm
+                case 'editProduct':
+                    include_once 'controllers/adminController/productAction/editProduct.php';
+                    $editProduct = new editProduct();
+                    break;
                 // thêm sản phẩm
                 case 'addProduct':
                     include_once 'controllers/adminController/productAction/addProduct.php';

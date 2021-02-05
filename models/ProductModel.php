@@ -12,7 +12,8 @@ class ProductModel extends DBConnect
     }
     // thêm sản phẩm
     public function addProduct($catalogID,$name,$price,$content,$imageLink){
-        $sql = "INSERT INTO product(catalog_id, name, price, content, image_link, created) VALUES ('$catalogID','$name','$price','$content','$imageLink',CURRENT_TIMESTAMP())";
+        $sql = "INSERT INTO product(catalog_id, name, price, content, image_link, created) 
+        VALUES ('$catalogID','$name','$price','$content','$imageLink',CURRENT_TIMESTAMP())";
         $result = mysqli_query($this->connect(),$sql);
         return $result;
     }
@@ -25,6 +26,19 @@ class ProductModel extends DBConnect
     // lấy thông tin product từ catalog_ID
     public function getDataProductByCatalogId($id){
         $sql = "SELECT * FROM product WHERE catalog_id = '$id'";
+        $result = mysqli_query($this->connect(),$sql);
+        return $result;
+    }
+    // lấy thông tin product từ product_ID
+    public function getDataByProductId($id){
+        $sql = "SELECT * FROM product WHERE id = '$id'";
+        $result = mysqli_query($this->connect(),$sql);
+        return $result;
+    }
+    // chỉnh sửa thông tin sản phẩm
+    public function editDataProduct($id,$catalogID,$name,$price,$content,$imageLink){
+        $sql = "UPDATE product SET catalog_id='$catalogID',name='$name',price='$price'
+            ,content='$content',image_link='$imageLink',created=CURRENT_TIMESTAMP() WHERE id = '$id'";
         $result = mysqli_query($this->connect(),$sql);
         return $result;
     }
