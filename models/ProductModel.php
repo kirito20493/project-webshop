@@ -4,8 +4,24 @@ class ProductModel extends DBConnect
 {
     // lấy thông tin tất cả sản phẩm JOIN catalog_ID với bảng Catalog
     public function getAllDataProduct(){
-        $sql = "SELECT product.id, product.name, product.price, product.content, catalog.name as cate_name, product.created FROM product 
-        INNER JOIN catalog where product.catalog_id = catalog.id
+        $sql = "SELECT product.id, product.name, product.price, product.content, product.image_link, catalog.name as cate_name, product.created FROM product 
+        INNER JOIN catalog WHERE product.catalog_id = catalog.id
+        GROUP BY product.id ASC";
+        $result = mysqli_query($this->connect(),$sql);
+        return $result;
+    }
+    // lấy thông tin tất cả sản phẩm JOIN catalog_ID với bảng Catalog WHERE catalogID
+    public function getDataProductWithCatalogID($cataID){
+        $sql = "SELECT product.id, product.name, product.price, product.content, product.image_link, catalog.name as cate_name, product.created FROM product 
+        INNER JOIN catalog WHERE product.catalog_id = catalog.id AND catalog.id = $cataID
+        GROUP BY product.id ASC";
+        $result = mysqli_query($this->connect(),$sql);
+        return $result;
+    }
+    // lấy thông tin tất cả sản phẩm JOIN catalog_ID với bảng Catalog WHERE productID
+    public function getDataProductWithProductID($productID){
+        $sql = "SELECT product.id, product.name, product.price, product.content, product.image_link, catalog.name as cate_name, product.created FROM product 
+        INNER JOIN catalog WHERE product.catalog_id = catalog.id AND product.id = $productID
         GROUP BY product.id ASC";
         $result = mysqli_query($this->connect(),$sql);
         return $result;

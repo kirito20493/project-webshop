@@ -37,5 +37,12 @@ class UsersModel extends DBConnect
             return true;
         }
     }
+    // Check Login
+    function checkLoginUser($email,$password)
+    {
+        $sql = "SELECT * FROM user WHERE email='$email' AND password='$password'";
+        $result = mysqli_query($this->connect(),$sql);
+        return $result;
+    }
 }
 ?>

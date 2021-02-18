@@ -1,8 +1,7 @@
 <?php
-session_start();
 include_once './models/CatalogModel.php';
 include_once './models/ProductModel.php';
-// include_once './models/OrdertModel.php';
+include_once './models/OrderModel.php';
 /**
  * Class điều hướng Action từ HomeController
  * (Sau khi đăng nhập thành công!)
@@ -116,8 +115,17 @@ class HomeController
                  * (đơn đặt hàng)
                  */
                 // hiện thị danh sách các đơn đặt hàng
+                case 'showListOrder':
+                    include_once 'controllers/adminController/orderAction/showListOrder.php';
+                    $showListOrder = new showListOrder();
+                    break;
                 // hiện thị chi tiết thông tin đơn đặt hàng
                 // xoá đơn đặt hàng
+                case 'deleteOrder':
+                    $orderModel = new OrderModel();
+                    $orderModel->deleteOrder($_GET['id']);
+                    header('Location: admin.php?controller=home&action=showListOrder');
+                    break;
                 // chỉnh sửa thông tin đơn đặt hàng
                 // thêm đơn đặt hàng
 

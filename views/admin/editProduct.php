@@ -3,7 +3,7 @@
     <div class="x_content">
         <h5>Chỉnh sửa thông tin sản phẩm:</h5>
         <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" 
-        action="admin.php?controller=home&action=editProduct&id=<?php echo $data['id']?>" method="POST">
+        action="admin.php?controller=home&action=editProduct&id=<?php echo $data['id']?>" method="POST" enctype="multipart/form-data">
 
             <div class="item form-group">
                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Tên sản phẩm:

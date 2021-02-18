@@ -32,11 +32,40 @@ class editProduct
             } else {
                 $content = $_POST['content'];
             }
-            if (empty($_POST['image_link'])){
-                $image_link = $data['image_link'];
+            // if (empty($_POST['image_link'])){
+            //     $image_link = $data['image_link'];
+            // } else {
+            //     $image_link = $_POST['image_link'];
+            // }
+            if(!empty($_FILES['image_link']['name'])) {
+                $errors= array();
+                $file_name = $_FILES['image_link']['name'];
+                $file_size =$_FILES['image_link']['size'];
+                $file_tmp =$_FILES['image_link']['tmp_name'];
+                $file_type=$_FILES['image_link']['type'];
+                $file_subName = explode('.', $_FILES['image_link']['name']);
+                $file_ext=strtolower(end($file_subName));
+                
+                $expensions= array("jpeg","jpg","png");
+                
+                if(in_array($file_ext, $expensions)=== false) {
+                    $errors ="Không chấp nhận định dạng ảnh có đuôi này, mời bạn chọn JPEG hoặc PNG.";
+                }
+                
+                if($file_size > 2097152) {
+                    $errors ='Kích cỡ file quá lớn!';
+                }
+                
+                if(empty($errors)==false) {
+                    $error['image_link'] = $errors;
+                } else { 
+                    $image_link = $file_name;
+                    move_uploaded_file($file_tmp, "public/images/".$file_name);
+                }
             } else {
-                $image_link = $_POST['image_link'];
+                $image_link = $data['image_link'];
             }
+
             // kiểm tra nếu không có lỗi thì Thực hiện update infor sản phẩm trong database
             if (empty($error)){
                 $productModel->editDataProduct($_GET['id'],$catalogID['id'],$name,$price,$content,$image_link);

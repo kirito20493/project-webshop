@@ -31,14 +31,36 @@ class addProduct
             } else {
                 $content = $_POST['content'];
             }
-            if (empty($_POST['image_link'])){
-                $error['image_link'] = "Xin mời nhập file";
+            if(isset($_FILES['image_link'])) {
+                $errors= array();
+                $file_name = $_FILES['image_link']['name'];
+                $file_size =$_FILES['image_link']['size'];
+                $file_tmp =$_FILES['image_link']['tmp_name'];
+                $file_type=$_FILES['image_link']['type'];
+                $file_subName = explode('.', $_FILES['image_link']['name']);
+                $file_ext=strtolower(end($file_subName));
+                $expensions= array("jpeg","jpg","png");
+                
+                if(in_array($file_ext, $expensions)=== false) {
+                    $errors ="Không chấp nhận định dạng ảnh có đuôi này, mời bạn chọn JPEG hoặc PNG.";
+                }
+                
+                if($file_size > 2097152) {
+                    $errors ='Kích cỡ file quá lớn!';
+                }
+                
+                if(empty($errors)==false) {
+                    $error['image_link'] = $errors;
+                } else { 
+                    $image_link = $file_name;
+                }
             } else {
-                $image_link = $_POST['image_link'];
+                    $error['image_link'] = "Vui lòng chọn avatar!";
             }
             // kiểm tra nếu không có lỗi thì Thực hiện thêm sản phẩm trong database
             if (empty($error)){
                 $productModel->addProduct($id['id'],$name,$price,$content,$image_link);
+                move_uploaded_file($file_tmp, "public/images/".$file_name);
                 header('Location: admin.php?controller=home&action=showListProduct');
             }
         }
