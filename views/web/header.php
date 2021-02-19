@@ -15,5 +15,6 @@
     <link rel="stylesheet" href="public/assests/css/footer.css">
     <link rel="stylesheet" href="public/assests/css/grid.css">
     <link rel="stylesheet" href="public/assests/css/responsive.css">
+    <link rel="stylesheet" href="public/assests/css/content.css">
     <script src="main.js"></script>
 </head>

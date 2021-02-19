@@ -2,6 +2,7 @@
 include_once './models/CatalogModel.php';
 include_once './models/ProductModel.php';
 include_once './models/OrderModel.php';
+include_once './models/TransactionModel.php';
 /**
  * Class điều hướng Action từ HomeController
  * (Sau khi đăng nhập thành công!)
@@ -109,25 +110,31 @@ class HomeController
                     $addProduct = new addProduct();
                     break;
                 // hiển thị chi tiết thông tin sản phẩm
-                
+                case 'detailProduct':
+                    include_once 'controllers/adminController/productAction/detailProduct.php';
+                    $detailProduct = new detailProduct();
+                    break;
                 /**
-                 * Làm việc với Oder Model
+                 * Làm việc với Transaction Model
                  * (đơn đặt hàng)
                  */
                 // hiện thị danh sách các đơn đặt hàng
-                case 'showListOrder':
-                    include_once 'controllers/adminController/orderAction/showListOrder.php';
-                    $showListOrder = new showListOrder();
+                case 'showListTransaction':
+                    include_once 'controllers/adminController/transactionAction/ShowListTransaction.php';
+                    $showListTransaction = new ShowListTransaction();
                     break;
                 // hiện thị chi tiết thông tin đơn đặt hàng
                 // xoá đơn đặt hàng
-                case 'deleteOrder':
-                    $orderModel = new OrderModel();
-                    $orderModel->deleteOrder($_GET['id']);
-                    header('Location: admin.php?controller=home&action=showListOrder');
+                case 'deleteTransaction':
+                    $transactionModel = new TransactionModel();
+                    $transactionModel->deleteTransaction($_GET['id']);
+                    header('Location: admin.php?controller=home&action=showListTransaction');
                     break;
-                // chỉnh sửa thông tin đơn đặt hàng
-                // thêm đơn đặt hàng
+                // xem chi tiết thông tin đơn đặt hàng
+                case 'detailTransaction':
+                    include_once 'controllers/adminController/transactionAction/DetailTransaction.php';
+                    $detailTransaction = new DetailTransaction();
+                    break;
 
                 //
                 default:

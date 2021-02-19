@@ -114,7 +114,7 @@
                             <a href=''>Địa chỉ của tôi</a>
                         </li> -->
                                 <li class='header__navbar-user-item'>
-                                    <a href=''>Đơn mua</a>
+                                    <a href='index.php?controller=home&action=detailTransaction'>Xem giỏ hàng</a>
                                 </li>
                                 <li class='header__navbar-user-item'>
                                     <a href='index.php?controller=home&action=logout'>Đăng xuất</a>

@@ -1,10 +1,10 @@
 <?php
-class showListOrder
+class ShowListTransaction
 {
-    public function showListOrder(){
+    public function ShowListTransaction(){
         $transactionModel = new TransactionModel();
         $result = $transactionModel->getAllDataTransaction();
-        include_once 'views/admin/showListOrder.php';
+        include_once 'views/admin/showListTransaction.php';
     }
 }
 ?>

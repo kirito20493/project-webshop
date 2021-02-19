@@ -29,7 +29,7 @@
                       <li><a href="admin.php?controller=home&action=showListUser">Quản lý User</a></li>
                       <li><a href="admin.php?controller=home&action=showListProduct">Quản lý hàng hoá</a></li>
                       <li><a href="admin.php?controller=home&action=showListCatalog">Quản lý Catalog</a></li>
-                      <li><a href="admin.php?controller=home&action=showListOrder">Quản lý đơn đặt hàng</a></li>
+                      <li><a href="admin.php?controller=home&action=showListTransaction">Quản lý đơn đặt hàng</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-user"></i>Tài khoản<span class="fa fa-chevron-down"></span></a>

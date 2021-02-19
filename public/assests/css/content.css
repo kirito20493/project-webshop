@@ -1,0 +1,26 @@
+/* detail transaction's css */
+.detail_transaction {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    padding-left: 100px;
+}
+.detail_transaction-image {
+    width: 250px;
+    height: 250px;
+}
+.detail_transaction-footer {
+    display: flex;
+    flex-direction: column;
+    padding-left: 100px;
+    padding-bottom: 50px;
+}
+.detail_transaction-footer-price-title {
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+}
+.detail_transaction-footer-btn {
+    margin-top: 20px;
+}
+/*  */

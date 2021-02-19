@@ -10,6 +10,13 @@ class ProductModel extends DBConnect
         $result = mysqli_query($this->connect(),$sql);
         return $result;
     }
+    // lấy thông tin tất cả sản phẩm JOIN catalog_ID với bảng Catalog
+    public function getAllDataProductLimit($start, $limit){
+        $sql = "SELECT product.id, product.name, product.price, product.content, product.image_link, catalog.name as cate_name, product.created FROM product 
+        INNER JOIN catalog WHERE product.catalog_id = catalog.id LIMIT $start, $limit";
+        $result = mysqli_query($this->connect(),$sql);
+        return $result;
+    }
     // lấy thông tin tất cả sản phẩm JOIN catalog_ID với bảng Catalog WHERE catalogID
     public function getDataProductWithCatalogID($cataID){
         $sql = "SELECT product.id, product.name, product.price, product.content, product.image_link, catalog.name as cate_name, product.created FROM product 
@@ -55,6 +62,12 @@ class ProductModel extends DBConnect
     public function editDataProduct($id,$catalogID,$name,$price,$content,$imageLink){
         $sql = "UPDATE product SET catalog_id='$catalogID',name='$name',price='$price'
             ,content='$content',image_link='$imageLink',created=CURRENT_TIMESTAMP() WHERE id = '$id'";
+        $result = mysqli_query($this->connect(),$sql);
+        return $result;
+    }
+    //đếm số dòng trong dataProduct
+    public function countRowsProduct(){
+        $sql = "SELECT COUNT(id) as total FROM product";
         $result = mysqli_query($this->connect(),$sql);
         return $result;
     }

@@ -5,10 +5,10 @@
                             <div class='row sm-gutter'>
                                 <!-- Product item -->
                                 <?php
-                                    $data = $result->fetch_assoc();
-                                    echo   "<div style='display: flex;'>
+                                    while ($data = $result->fetch_assoc()){
+                                    echo   "<div class='detail_transaction' style='display: flex;'>
                                                 <div style='margin-right: 50px';>
-                                                    <img src='public/images/".$data['image_link']."' alt=''>
+                                                    <img class='detail_transaction-image' src='public/images/".$data['image_link']."' alt=''>
                                                 </div>
                                                 <div>
                                                     <h1>Thông tin sản phẩm</h1>
@@ -27,8 +27,20 @@
                                                         </li>
                                                     </ul>
                                                     <button class='btn btn--primary'><a style='color:white; text-decoration:none' 
-                                                            href='index.php?controller=home&action=addOrder&id=".$data['id']."'>Thêm vào giỏ</a></button>
+                                                            href='index.php?controller=home&action=deleteOrder&orderID=".$data['id']."&transactionID=".$data['transaction_id']."'>Xoá</a></button>
                                                 </div>
+                                            </div>";
+                                    }
+                                    echo    "<div class='detail_transaction-footer'>
+                                                <div class='detail_transaction-footer-price'>
+                                                    <label class='detail_transaction-footer-price-title'>Tổng giá trị đơn hàng: </label><span>".$data['price']."</span>
+                                                </div>
+                                                <div class='detail_transaction-footer-btn'>
+                                                    <button class='btn btn--primary'><a style='color:white; text-decoration:none' 
+                                                    href='index.php?controller=home&action=payment&transactionID=".$transactionID."'>Thanh toán</a></button>
+                                                    <button class='btn btn--primary'><a style='color:white; text-decoration:none' 
+                                                            href='index.php?controller=home'>Tiếp tục mua sắm</a></button>
+                                                </div>                                                
                                             </div>";
                                 ?>
                                 
