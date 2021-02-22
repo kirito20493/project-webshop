@@ -5,6 +5,7 @@
                             <div class='row sm-gutter'>
                                 <!-- Product item -->
                                 <?php
+                                $amount = 0;
                                     while ($data = $result->fetch_assoc()){
                                     echo   "<div class='detail_transaction' style='display: flex;'>
                                                 <div style='margin-right: 50px';>
@@ -30,10 +31,11 @@
                                                             href='index.php?controller=home&action=deleteOrder&orderID=".$data['id']."&transactionID=".$data['transaction_id']."'>Xoá</a></button>
                                                 </div>
                                             </div>";
+                                            $amount += $data['price'];
                                     }
                                     echo    "<div class='detail_transaction-footer'>
                                                 <div class='detail_transaction-footer-price'>
-                                                    <label class='detail_transaction-footer-price-title'>Tổng giá trị đơn hàng: </label><span>".$data['price']."</span>
+                                                    <label class='detail_transaction-footer-price-title'>Tổng giá trị đơn hàng: </label><span style = 'font-size: 15px; font-weight:bold'>".$amount." $</span>
                                                 </div>
                                                 <div class='detail_transaction-footer-btn'>
                                                     <button class='btn btn--primary'><a style='color:white; text-decoration:none' 

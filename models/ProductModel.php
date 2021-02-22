@@ -71,5 +71,25 @@ class ProductModel extends DBConnect
         $result = mysqli_query($this->connect(),$sql);
         return $result;
     }
+    // sắp xếp sản phẩm theo thời gian (10 sản phẩm được thêm mới nhất)
+    public function SortProductByTimeAddNew(){
+        $sql = "SELECT product.id, product.name, product.price, product.content, product.image_link, catalog.name as cate_name, product.created FROM product 
+        INNER JOIN catalog WHERE product.catalog_id = catalog.id ORDER BY product.created DESC LIMIT 0, 10";
+        $result = mysqli_query($this->connect(),$sql);
+        return $result;
+    }
+    // lấy thông tin sản phẩm JOIN với bảng order (đếm số lượng được bán ra củ sản phẩm)
+    public function SortProductByTimeOrder(){
+        $sql = "SELECT product.id, product.name, product.price, product.content, product.image_link , COUNT(order.product_id) as cnt FROM `order` 
+        INNER JOIN product WHERE `product`.id = `order`.product_id GROUP BY product_id ORDER BY cnt DESC";
+        $result = mysqli_query($this->connect(),$sql);
+        return $result;
+    }
+    // lấy thông tin sản phẩm với KeyWord nhập từ input search
+    public function SortProductByKeyWord($keyWord){
+        $sql = "SELECT * from product WHERE name LIKE '%$keyWord%'";
+        $result = mysqli_query($this->connect(),$sql);
+        return $result;
+    }
 }
 ?>

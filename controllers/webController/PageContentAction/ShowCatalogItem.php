@@ -9,7 +9,7 @@ class ShowCatalogItem
             $result = $productModel->getDataProductWithCatalogID($catalogID);
         } 
 
-        include_once 'views/web/showListProduct.php';
+        include_once 'views/web/showListProductItem.php';
     }
 }
 ?>

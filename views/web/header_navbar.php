@@ -38,50 +38,6 @@
                                 <i class='header__navbar-icon far fa-bell'></i>
                                 Thông báo
                             </a>
-                            <!-- hiện thông báo của trang web -->
-                            <!-- <div class='header__notify'>
-                                <header class='header__notify-header'>
-                                    <h3>Thông báo mới nhận</h3>
-                                </header>
-                                <ul class='header__notify-list'>
-                                    <li class='header__notify-item'>
-                                        <a href='' class='header__notify-link'>
-                                            <img src='https://hc.com.vn/i/ecommerce/media/GS.005343_FEATURE_68084.jpg'
-                                                alt='' class='header__notify-img'>
-                                            <div class='header__notify-info'>
-                                                <span class='header__notify-name'>Macbook Pro chính hãng</span>
-                                                <span class='header__notify-descriotion'>Mô tả Macbook Pro chính
-                                                    hãng</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class='header__notify-item'>
-                                        <a href='' class='header__notify-link'>
-                                            <img src='https://hc.com.vn/i/ecommerce/media/GS.005343_FEATURE_68084.jpg'
-                                                alt='' class='header__notify-img'>
-                                            <div class='header__notify-info'>
-                                                <span class='header__notify-name'>Macbook Pro chính hãng</span>
-                                                <span class='header__notify-descriotion'>Mô tả Macbook Pro chính
-                                                    hãng</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class='header__notify-item'>
-                                        <a href='' class='header__notify-link'>
-                                            <img src='https://hc.com.vn/i/ecommerce/media/GS.005343_FEATURE_68084.jpg'
-                                                alt='' class='header__notify-img'>
-                                            <div class='header__notify-info'>
-                                                <span class='header__notify-name'>Macbook Pro chính hãng</span>
-                                                <span class='header__notify-descriotion'>Mô tả Macbook Pro chính
-                                                    hãng</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <footer class='header__notify-footer'>
-                                    <a href='' class='header__notify-footer-btn'>Xem tất cả</a>
-                                </footer>
-                            </div> -->
                         </li>
                         <li class='header__navbar-item'>
                             <a href='' class='header__navbar-item-link'>
@@ -89,12 +45,6 @@
                                 Trợ giúp
                             </a>
                         </li>
-                        <!-- <li class='header__navbar-item header__navbar-item--strong header__navbar-item--separate'>
-                            Đăng ký
-                        </li>
-                        <li class='header__navbar-item header__navbar-item--strong'>
-                            Đăng nhập
-                        </li> -->
 
                         <!-- after login -->
                         <li class='header__navbar-item header__navbar-user'>
@@ -137,41 +87,15 @@
 
                     <input type='checkbox' hidden class='header__search-checkbox' name='' id='mobile-search-checkbox'>
 
-                    <div class='header__search'>
-                        <div class='header__search-input-wrap'>
-                            <input type='text' class='header__search-input' placeholder='Nhập để tìm kiếm sản phẩm'>
-                            <!-- search history -->
-                            <div class='header__search-history'>
-                                <h3 class='header__search-history-heading'>Lịch sử tìm kiếm</h3>
-                                <ul class='header__search-history-list'>
-                                    <li class='header__search-history-item'>
-                                        <a href=''>MacbookAir mid 2015</a>
-                                    </li>
-                                    <li class='header__search-history-item'>
-                                        <a href=''>MacbookPro early 2017</a>
-                                    </li>
-                                </ul>
+                    <form class='header__search' method='POST', action='index.php?controller=home&action=search'>
+                            <div class='header__search-input-wrap'>
+                                <input type='text' name='searchKey' class='header__search-input' placeholder='Nhập để tìm kiếm sản phẩm'>
                             </div>
-                        </div>
-                        <div class='header__search-select'>
-                            <span class='header__search-select-label'>Trong shop</span>
-                            <i class='header__search-select-icon fas fa-angle-down'></i>
-
-                            <ul class='header__search-option'>
-                                <li class='header__search-option-item header__search-option-item--active'>
-                                    <span>Trong shop</span>
-                                    <i class='fas fa-check'></i>
-                                </li>
-                                <li class='header__search-option-item'>
-                                    <span>Ngoài shop</span>
-                                    <i class='fas fa-check'></i>
-                                </li>
-                            </ul>
-                        </div>
-                        <button class='header__search-btn'>
-                            <i class='header__search-btn-icon fas fa-search'></i>
-                        </button>
-                    </div>
+                            <button type='submit' name='keyword' class='header__search-btn'>
+                                <i class='header__search-btn-icon fas fa-search'></i>
+                            </button>
+                    </form >
+                    
                     <!-- Cart layout -->
                     <div class='header__cart'>
                         <div class='header__cart-wrap'>
@@ -254,7 +178,7 @@
                     <a href='' class='header__sort-link'>Liên quan</a>
                 </li>
                 <li class='header__sort-item header__sort-item--active'>
-                    <a href='' class='header__sort-link'>Mới nhất</a>
+                    <a href='index.php?controller=home&action=sortByTime' class='header__sort-link'>Mới nhất</a>
                 </li>
                 <li class='header__sort-item'>
                     <a href='' class='header__sort-link'>Bán chạy</a>
@@ -300,3 +224,4 @@
                             </ul>
                         </nav>
                     </div>
+                    

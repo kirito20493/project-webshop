@@ -3,8 +3,8 @@
                         <div class='home-filter hide-on-mobile-tablet'>
                             <span class='home-filter__label'>Sắp xếp theo</span>
                             <button class='home-filter__btn btn'>Phổ biến</button>
-                            <button class='home-filter__btn btn btn--primary'>Mới nhất</button>
-                            <button class='home-filter__btn btn'>Bán chạy</button>
+                            <button onclick="window.location.href='index.php?controller=home&action=sortByTime'" class='home-filter__btn btn btn--primary'>Mới nhất</button>
+                            <button onclick="window.location.href='index.php?controller=home&action=sortTimeOrder'" class='home-filter__btn btn'>Bán chạy</button>
 
                             <div class='select-input'>
                                 <span class='select-input__label'>Giá</span>
@@ -120,37 +120,40 @@
                         </div>
 
                         <ul class='pagination home-product__pagination'>
-                            <li class='pagination-item'>
-                                <a href='#' class='pagination-item__link'>
-                                    <i class='pagination-item__icon fas fa-angle-left'></i>
-                                </a>
-                            </li>
-                            <li class='pagination-item pagination-item--active'>
-                                <a href='#' class='pagination-item__link'>1</a>
-                            </li>
-                            <li class='pagination-item'>
-                                <a href='#' class='pagination-item__link'>2</a>
-                            </li>
-                            <li class='pagination-item'>
-                                <a href='#' class='pagination-item__link'>3</a>
-                            </li>
-                            <li class='pagination-item'>
-                                <a href='#' class='pagination-item__link'>4</a>
-                            </li>
-                            <li class='pagination-item'>
-                                <a href='#' class='pagination-item__link'>5</a>
-                            </li>
-                            <li class='pagination-item'>
-                                <a href='#' class='pagination-item__link'>...</a>
-                            </li>
-                            <li class='pagination-item'>
-                                <a href='#' class='pagination-item__link'>14</a>
-                            </li>
-                            <li class='pagination-item'>
-                                <a href='#' class='pagination-item__link'>
-                                    <i class='pagination-item__icon fas fa-angle-right'></i>
-                                </a>
-                            </li>
+                            <?php 
+                                if ($current_page > 1 && $total_page > 1){
+                                    echo "<li class='pagination-item'>
+                                            <a href='index.php?controller=home&action=page&page=".($current_page-1)."' class='pagination-item__link'>
+                                                <i class='pagination-item__icon fas fa-angle-left'></i>
+                                            </a>
+                                        </li>";
+                                }
+                                    // Lặp khoảng giữa
+                                    for ($i = 1; $i <= $total_page; $i++){
+                                        // Nếu là trang hiện tại thì hiển thị thẻ span
+                                        // ngược lại hiển thị thẻ a
+                                        if ($i == $current_page){
+                                            echo "<li class='pagination-item'>
+                                                    <span class='pagination-item__link' disbled>".$i."</span>
+                                                </li>";
+                                        }
+                                        else{
+                                            echo "<li class='pagination-item'>
+                                                <a href='index.php?controller=home&action=page&page=".$i."' class='pagination-item__link'>".$i."</a>
+                                            </li>";
+                                        }
+                                    }
+
+                                    // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+                                    if ($current_page < $total_page && $total_page > 1){
+                                        echo "<li class='pagination-item'>
+                                                <a href='index.php?controller=home&action=page&page=".($current_page+1)."' class='pagination-item__link'>
+                                                    <i class='pagination-item__icon fas fa-angle-right'></i>
+                                                </a>
+                                            </li>";
+                                    }
+                                
+                            ?>
                         </ul>
                     </div>
                 </div>

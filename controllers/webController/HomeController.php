@@ -56,7 +56,23 @@ class HomeController
             echo "<script type='text/javascript'>alert('$message');</script>";
             include_once 'views/web/emptyTransaction.php';
             break;
+        // sort by created's time
+        case 'sortByTime':
+            include_once 'controllers/webController/PageContentAction/SortByTime.php';
+            $sortByTime = new SortByTime();
+            break;
+        // sắp xếp theo số lượng sản phẩm được bán ra
+        case 'sortTimeOrder';
+            include_once 'controllers/webController/PageContentAction/SortTimeOrder.php';
+            $sortTimeOrder = new SortTimeOrder();
+            break;
+        // search product with keyword from input search
+        case 'search';
+            include_once 'controllers/webController/PageContentAction/Search.php';
+            $search = new Search();
+            break;
         }
+        
         include_once 'views/web/footer.php';
     }   
 }

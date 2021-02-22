@@ -22,7 +22,8 @@
                         } else {
                             $status = 'Đã thanh toán';
                         }
-                        echo "<tr>
+                        if ($data['amount'] > 0){
+                            echo "<tr>
                                 <th scope='row'>".$data['id']."</th>
                                 <td>".$data['user_email']."</td>
                                 <td>".$data['amount']."</td>
@@ -30,6 +31,7 @@
                                 <td><a style='margin-right:20px;' href='admin.php?controller=home&action=detailTransaction&id=".$data['id']."'>Detail </a>
                                     <a href='admin.php?controller=home&action=deleteTransaction&id=".$data['id']."'> Delete</a></td>
                             </tr> ";
+                        }
                     }
                 ?>
                           

@@ -74,7 +74,7 @@
                                     while ($data = $result->fetch_assoc()){
                                         echo 
                                 "<div class='col l-2-4 m-4 c-6'>
-                                    <a class='home-product-item' href='#'>
+                                    <a class='home-product-item' href='index.php?controller=home&action=inforProduct&id=".$data['id']."'>
                                         <div class='home-product-item__img'
                                             style='background-image: url(public/images/".$data['image_link'].");'>
                                             <h4 class='home-product-item__name'>".$data['name']."</h4>
@@ -118,42 +118,7 @@
                                 ?>
                             </div>
                         </div>
-
-                        <ul class='pagination home-product__pagination'>
-                            <li class='pagination-item'>
-                                <a href='#' class='pagination-item__link'>
-                                    <i class='pagination-item__icon fas fa-angle-left'></i>
-                                </a>
-                            </li>
-                            <li class='pagination-item pagination-item--active'>
-                                <a href='#' class='pagination-item__link'>1</a>
-                            </li>
-                            <li class='pagination-item'>
-                                <a href='#' class='pagination-item__link'>2</a>
-                            </li>
-                            <li class='pagination-item'>
-                                <a href='#' class='pagination-item__link'>3</a>
-                            </li>
-                            <li class='pagination-item'>
-                                <a href='#' class='pagination-item__link'>4</a>
-                            </li>
-                            <li class='pagination-item'>
-                                <a href='#' class='pagination-item__link'>5</a>
-                            </li>
-                            <li class='pagination-item'>
-                                <a href='#' class='pagination-item__link'>...</a>
-                            </li>
-                            <li class='pagination-item'>
-                                <a href='#' class='pagination-item__link'>14</a>
-                            </li>
-                            <li class='pagination-item'>
-                                <a href='#' class='pagination-item__link'>
-                                    <i class='pagination-item__icon fas fa-angle-right'></i>
-                                </a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        
