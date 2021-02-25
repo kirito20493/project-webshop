@@ -27,7 +27,7 @@ class UsersModel extends DBConnect
         return $result;
     }
     // Hàm kiểm tra Email đã tồn tại chưa
-    function checkIssetEmail($email)
+    public function checkIssetEmail($email)
     {
         $sql = "SELECT * FROM user WHERE email='$email'";
         $result = mysqli_query($this->connect(), $sql);
@@ -38,9 +38,15 @@ class UsersModel extends DBConnect
         }
     }
     // Check Login
-    function checkLoginUser($email,$password)
+    public function checkLoginUser($email,$password)
     {
         $sql = "SELECT * FROM user WHERE email='$email' AND password='$password'";
+        $result = mysqli_query($this->connect(),$sql);
+        return $result;
+    }
+    // add new user
+    public function creatUser($email,$phonenumber,$address,$password){
+        $sql = "INSERT INTO `user`(`email`, `phone`, `address`, `password`) VALUES ('$email','$phonenumber','$address','$password')";
         $result = mysqli_query($this->connect(),$sql);
         return $result;
     }

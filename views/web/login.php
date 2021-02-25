@@ -10,9 +10,19 @@
                 <div class="auth-form__form">
                     <div class="auth-form__group">
                         <input type="text" name="email" class="auth-form__input" placeholder="Email của bạn">
+                        <?php
+                            if(isset($error['email'])){
+                        ?>
+                        <span style="color:red"><?php echo $error['email'];?></span>
+                        <?php }?>
                     </div>
                     <div class="auth-form__group">
-                        <input type="text" name="password" class="auth-form__input" placeholder="Mật khẩu của bạn">
+                        <input type="password" name="password" class="auth-form__input" placeholder="Mật khẩu của bạn">
+                        <?php
+                            if(isset($error['password'])){
+                        ?>
+                        <span style="color:red"><?php echo $error['password'];?></span>
+                        <?php }?>
                     </div>
                 </div>
 

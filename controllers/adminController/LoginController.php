@@ -17,7 +17,7 @@ class LoginController
                 $error['username'] = "Tài khoản này không tồn tại!";
             } else {
                 $username = $_POST['username'];
-                $password = $_POST['password'];
+                $password = md5($_POST['password']);
                 $result = $model->checkLogin($username, $password);
                 $data = $result->fetch_assoc();
                 if ($data['username'] == $username && $data['password'] == $password) {

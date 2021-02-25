@@ -1,71 +1,8 @@
 <!-- home page's container -->
 <div class='col l-10 m-12 c-12'>
-                        <div class='home-filter hide-on-mobile-tablet'>
-                            <span class='home-filter__label'>Sắp xếp theo</span>
-                            <button class='home-filter__btn btn'>Phổ biến</button>
-                            <button onclick="window.location.href='index.php?controller=home&action=sortByTime'" class='home-filter__btn btn btn--primary'>Mới nhất</button>
-                            <button onclick="window.location.href='index.php?controller=home&action=sortTimeOrder'" class='home-filter__btn btn'>Bán chạy</button>
-
-                            <div class='select-input'>
-                                <span class='select-input__label'>Giá</span>
-                                <i class='select-input__icon fas fa-angle-down'></i>
-                                <ul class='select-input__list'>
-                                    <li class='select-input__item'>
-                                        <a href='#' class='select-input__link'>Giá: thấp đến cao</a>
-                                    </li>
-                                    <li class='select-input__item'>
-                                        <a href='#' class='select-input__link'>Giá: cao đến thấp</a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class='home-filter__page'>
-                                <span class='home-filter__page-num'>
-                                    <span class='home-filter__page-current'>1</span>/14
-                                </span>
-
-                                <div class='home-filter__page-control'>
-                                    <a href='' class='home-filter__page-btn home-filter__page-btn--disabled'>
-                                        <i class='home-filter__page-icon fas fa-angle-left'></i>
-                                    </a>
-                                    <a href='' class='home-filter__page-btn'>
-                                        <i class='home-filter__page-icon fas fa-angle-right'></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <nav class='mobile-category'>
-                            <ul class='mobile-category__list'>
-                                <li class='mobile-category__item'>
-                                    <a href='' class='mobile-category__link'>Hàng mới nhất trong tháng</a>
-                                </li>
-                                <li class='mobile-category__item'>
-                                    <a href='' class='mobile-category__link'>Hàng nổi bật nhất trong tháng</a>
-                                </li>
-                                <li class='mobile-category__item'>
-                                    <a href='' class='mobile-category__link'>Hàng có lượt mua nhiều nhất trong tháng</a>
-                                </li>
-                                <li class='mobile-category__item'>
-                                    <a href='' class='mobile-category__link'>Hàng mới nhất trong tháng</a>
-                                </li>
-                                <li class='mobile-category__item'>
-                                    <a href='' class='mobile-category__link'>Hàng nổi bật nhất trong tháng</a>
-                                </li>
-                                <li class='mobile-category__item'>
-                                    <a href='' class='mobile-category__link'>Hàng có lượt mua nhiều nhất trong tháng</a>
-                                </li>
-                                <li class='mobile-category__item'>
-                                    <a href='' class='mobile-category__link'>Hàng mới nhất trong tháng</a>
-                                </li>
-                                <li class='mobile-category__item'>
-                                    <a href='' class='mobile-category__link'>Hàng nổi bật nhất trong tháng</a>
-                                </li>
-                                <li class='mobile-category__item'>
-                                    <a href='' class='mobile-category__link'>Hàng có lượt mua nhiều nhất trong tháng</a>
-                                </li>
-                            </ul>
-                        </nav>
+                        <?php
+                            include_once 'container-header.php';
+                        ?>
 
                         <div class='home-product'>
                             <div class='row sm-gutter'>
@@ -117,6 +54,42 @@
                                 }
                                 ?>
                             </div>
+                            <ul class='pagination home-product__pagination'>
+                            <?php 
+                                if ($current_page > 1 && $total_page > 1){
+                                    echo "<li class='pagination-item'>
+                                            <a href='index.php?controller=home&action=search&page=".($current_page-1)."' class='pagination-item__link'>
+                                                <i class='pagination-item__icon fas fa-angle-left'></i>
+                                            </a>
+                                        </li>";
+                                }
+                                    // Lặp khoảng giữa
+                                    for ($i = 1; $i <= $total_page; $i++){
+                                        // Nếu là trang hiện tại thì hiển thị thẻ span
+                                        // ngược lại hiển thị thẻ a
+                                        if ($i == $current_page){
+                                            echo "<li class='pagination-item'>
+                                                    <span class='pagination-item__link' disbled>".$i."</span>
+                                                </li>";
+                                        }
+                                        else{
+                                            echo "<li class='pagination-item'>
+                                                <a href='index.php?controller=home&action=search&page=".$i."' class='pagination-item__link'>".$i."</a>
+                                            </li>";
+                                        }
+                                    }
+
+                                    // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+                                    if ($current_page < $total_page && $total_page > 1){
+                                        echo "<li class='pagination-item'>
+                                                <a href='index.php?controller=home&action=search&page=".($current_page+1)."' class='pagination-item__link'>
+                                                    <i class='pagination-item__icon fas fa-angle-right'></i>
+                                                </a>
+                                            </li>";
+                                    }
+                                
+                            ?>
+                        </ul>
                         </div>
 
                     

@@ -11,13 +11,14 @@ class changePasswordAdmin {
             } else {
                 $result = $model->getDataByUsername($username);
                 $data = $result->fetch_assoc();
-                if ($_POST['passwordOld'] != $data['password']) {
+                $passwordOld = md5($_POST['passwordOld']);
+                if ($passwordOld != $data['password']) {
                     $error['passwordOld'] = "Mật khẩu không chính xác!";
                 }
                 if(!isPassWord($_POST['password'])) {
                     $error['password'] = 'PassWord phải gôm chữ + số và không có ký tự trống!'; 
                 }else{
-                    $password = $_POST['password'];
+                    $password = md5($_POST['password']);
                 }
                 // validate Password-confirmation
                 if ($_POST['password_confirmation'] != $_POST['password']) {

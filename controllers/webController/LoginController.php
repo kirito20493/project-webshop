@@ -13,7 +13,7 @@ class LoginController {
                 $error['email'] = "Email này chưa được đăng ký!";
             } else {
                 $email = $_POST['email'];
-                $password = $_POST['password'];
+                $password = md5($_POST['password']);
                 $result = $model->checkLoginUser($email, $password);
                 $data = $result->fetch_assoc();
                 if ($data['email'] == $email && $data['password'] == $password) {

@@ -25,7 +25,7 @@ class RegisterController
             if(!isPassWord($_POST['password'])) {
                 $error['password'] = 'PassWord phải gôm chữ + số và không có ký tự trống!'; 
             }else{
-                $password = $_POST['password'];
+                $password = md5($_POST['password']);
             }
             // validate Password-confirmation
             if (empty($_POST['password_confirmation'])) {

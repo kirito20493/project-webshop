@@ -3,6 +3,7 @@ include_once './models/CatalogModel.php';
 include_once './models/ProductModel.php';
 include_once './models/OrderModel.php';
 include_once './models/TransactionModel.php';
+include_once './models/CommentModel.php';
 class HomeController
 {   
     public function handleRequestAction(){
@@ -62,14 +63,26 @@ class HomeController
             $sortByTime = new SortByTime();
             break;
         // sắp xếp theo số lượng sản phẩm được bán ra
-        case 'sortTimeOrder';
+        case 'sortTimeOrder':
             include_once 'controllers/webController/PageContentAction/SortTimeOrder.php';
             $sortTimeOrder = new SortTimeOrder();
             break;
         // search product with keyword from input search
-        case 'search';
+        case 'search':
             include_once 'controllers/webController/PageContentAction/Search.php';
             $search = new Search();
+            break;
+        /**
+         * Action của các bình luận đánh giá trong inforProduct
+         */
+        // Rating product & comment
+        case 'rating':
+            include_once 'controllers/webController/InforProductAction/UpdateRating.php';
+            $updateRating = new UpdateRating();
+            break;
+        case 'addcomment':
+            include_once 'controllers/webController/InforProductAction/AddComment.php';
+            $addComment = new AddComment();
             break;
         }
         
